@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Nasza stacja paliw</title>
+    <link rel="stylesheet" href="styl4.css">
+</head>
+
+<body>
+    <div class="banner">
+        <h2>Oblicz, ile litrów musisz zatankować</h2>
+    </div>
+    <div class="main-block">
+        <label for="distance">Dystans do przejechania w km:</label>
+        <input type="number" id="distance" name="distance"><br><br>
+        <label for="consumption">Spalanie samochodu w l/100km:</label>
+        <input type="number" id="consumption" name="consumption"><br><br>
+        <button id="calculate">OBLICZ</button>
+        <div class="home-button">
+            <a href="index2.html"><img src="home.png" alt="home"></a>
+        </div>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        document.getElementById("calculate").addEventListener("click", function () {
+            var distance = parseInt(document.getElementById("distance").value);
+            var consumption = parseInt(document.getElementById("consumption").value);
+            var fuelNeeded = (distance * consumption) / 100;
+            document.getElementById("result").textContent = "Potrzebujesz: " + fuelNeeded + " litrów paliwa";
+        });
+
+    </script>
+</body>
+
+</html>

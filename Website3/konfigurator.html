@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Style w JavaScript</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="styl6.css">
+  <style>
+    .container {
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+  <script>
+    function changeBackground(color) {
+      document.getElementById('prawy').style.backgroundColor = color;
+    }
+
+    function changeFontColor() {
+      var fontColor = document.getElementById('fontColor').value;
+      document.getElementById('prawy').style.color = fontColor;
+    }
+
+    function changeFontSize() {
+      var fontSize = document.getElementById('fontSize').value;
+      document.getElementById('prawy').style.fontSize = fontSize;
+    }
+
+    function toggleFrame() {
+      var frameCheckbox = document.getElementById('frame');
+      var image = document.querySelector('#prawy img');
+
+      if (frameCheckbox.checked) {
+        image.style.border = '1px solid white';
+      } else {
+        image.style.border = 'none';
+      }
+    }
+
+    function changeBulletType() {
+      var bullets = document.querySelectorAll('#prawy ul li');
+      var bulletType = document.querySelector('input[name="bullet"]:checked').value;
+
+      bullets.forEach(function(bullet) {
+        bullet.style.listStyleType = bulletType;
+      });
+    }
+  </script>
+</head>
+<body>
+  <h1>Konfigurator stylu</h1>
+
+  <div class="container">
+    <section id="lewy">
+      <h1>Konfigurator stylu</h1>
+      <p>Podaj kolor tła</p>
+      <button id="indigo" onclick="changeBackground('indigo')">Indigo</button>
+      <button id="steelblue" onclick="changeBackground('steelblue')">SteelBlue</button>
+      <button id="olive" onclick="changeBackground('olive')">Olive</button>
+
+      <p>Podaj kolor czcionki</p>
+      <select id="fontColor" onchange="changeFontColor()">
+        <option value="white">White</option>
+        <option value="tan">Tan</option>
+        <option value="bisque">Bisque</option>
+        <option value="plum">Plum</option>
+      </select>
+
+      <p>Podaj rozmiar czcionki w procentach, np. 200%</p>
+      <input type="text" id="fontSize" onchange="changeFontSize()" value="100%">
+
+      <p>Czy rysunek ma mieć ramkę?</p>
+      <input type="checkbox" id="frame" onchange="toggleFrame()" checked>
+      <label for="frame">Rysuj ramkę</label>
+
+      <p>Jaki jest typ punktora listy?</p>
+      <input type="radio" id="disk" name="bullet" value="disk" onchange="changeBulletType()" checked>
+      <label for="disk">Dysk</label>
+      <input type="radio" id="square" name="bullet" value="square" onchange="changeBulletType()">
+      <label for="square">Kwadrat</label>
+      <input type="radio" id="circle" name="bullet" value="circle" onchange="changeBulletType()">
+      <label for="circle">Okrąg</label>
+    </section>
+
+    <section id="prawy">
+      <img src="gibraltar.jpg" alt="półwysep Gibraltar">
+      <ul>
+        <li>Element 1</li>
+        <li>Element 2</li>
+        <li>Element 3</li>
+      </ul>
+      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</p>
+    </section>
+  </div>
+
+  <footer>
+    <p>Autor: 152152521</p>
+    <p>PESEL: 123152152</p>
+  </footer>
+</body>
+</html>

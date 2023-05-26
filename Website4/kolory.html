@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pomocnik CSS - Czcionki</title>
+    <link rel="stylesheet" href="styl2.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="banner">
+            <h1>Pomocnik CSS</h1>
+            <ul class="menu">
+                <li><a href="kolory.html">Kolory</a></li>
+                <li><a href="czcionki.html">Czcionki</a></li>
+                <li><a href="style.html">Style CSS</a></li>
+                <li><a href="https://www.w3schools.com/css/" target="_blank">Pomoc</a></li>
+            </ul>
+        </div>
+        <div class="main-block">
+            <h2>Podaj składową H koloru w kodzie HSL</h2>
+            <p>0 do 30 czerwienie, do 60 żółcie, do 150 zielenie, do 250 niebieskie, do 360 fiolet i purpura</p>
+            <img src="kolory.jpg" alt="Przestrzeń barw HSL">
+            <input type="number" id="h-value" min="0" max="360" placeholder="0 - 360">
+            <button onclick="generatePalette()">Generuj paletę</button>
+            <table>
+                <tr>
+                    <td colspan="4">Paleta kolorów</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="footer">
+            <p>Autor: 512512512</p>
+        </div>
+    </div>
+
+    <script>
+        function generatePalette() {
+            var hValue = document.getElementById('h-value').value;
+
+            if (hValue < 0 || hValue > 360) {
+                alert('Wprowadź liczbę od 0 do 360');
+                return;
+            }
+
+            var saturationValues = ['100%', '80%', '60%', '40%', '20%'];
+
+            var cells = document.getElementsByTagName('td');
+            for (var i = 0; i < cells.length; i++) {
+                if (i < saturationValues.length) {
+                    var color = 'hsl(' + hValue + ', ' + saturationValues[i] + ', 50%)';
+                    cells[i].style.backgroundColor = color;
+                } else {
+                    break;
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

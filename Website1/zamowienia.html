@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kochamy kawę</title>
+    <link rel="stylesheet" href="styl.css">
+</head>
+<body style="background-color: wheat">
+    <section class="menu">
+        <a href="index.html">Strona główna</a>
+        <a href="zamowienia.html">Zamówienia</a>
+        <a href="blog.html">Blog</a>
+        <a href="http://gatunki-kawy.pl/">Gatunki kawy</a>
+    </section>
+    <section class="baner">
+        <h1>Sklep z kawą</h1>
+    </section>
+    
+    <section class="lewy">
+        <label for="numer">Podaj numer kawy:</label>
+        <input type="number" id="numer">
+        <br>
+        <label for="waga">Podaj wagę w dekagramach:</label>
+        <input type="number" id="waga">
+        <br>
+        <button onclick="obliczKoszt()">Zamów</button>
+        <p id="wynik"></p>
+    </section>
+    
+    <section class="prawy">
+        <h3>Oferta</h3>
+        <ul>
+            <li>Arabica</li>
+            <li>Robusta</li>
+            <li>bezkofeinowa</li>
+            <li>zielona</li>
+        </ul>
+    </section>
+    
+    <footer>
+        Stronę przygotował: <strong>253253</strong>
+    </footer>
+
+    <script>
+        function obliczKoszt() {
+            var numer = parseInt(document.getElementById("numer").value);
+            var waga = parseInt(document.getElementById("waga").value);
+            var koszt = 0;
+            var komunikat = "";
+            
+            if (waga < 10) {
+                komunikat = "Minimalna waga kupionej kawy to 10 dekagramów.";
+            } else if (isNaN(waga) || waga === 0) {
+                komunikat = "Wprowadź poprawną wagę kawy lub poprawny numer kawy.";
+            } else {
+                switch (numer) {
+                    case 1:
+                        koszt = waga * 10;  // Cena dla numeru 1
+                        break;
+                    case 2:
+                        koszt = waga * 15;  // Cena dla numeru 2
+                        break;
+                    case 4:
+                        koszt = waga * 12;  // Cena dla numeru 4
+                        break;
+                    default:
+                        komunikat = "Podaj prawidłowy numer kawy.";
+                        break;
+                }
+            }
+            
+            if (komunikat === "") {
+                var wynik = document.getElementById("wynik");
+                wynik.textContent = "Koszt zamówienia wynosi: " + koszt + " zł";
+            } else {
+                var wynik = document.getElementById("wynik");
+                wynik.textContent = komunikat;
+            }
+        }
+    </script>
+</body>
+</html>
